@@ -7,14 +7,14 @@ pool:
 variables:
   azureSubscription: 'SUMATIVA_2' # Este es un nombre que debe cambiar al que crearon.
   location: 'eastus2'
-  resourceGroupName: 'GR_SUMATIVA2' # Este es un nombre que debe cambiar al que crearon.
-  virtualNetworkName: 'VNet-taller-DevOps'
-  subnetName: 'Subnet-taller-DevOps'
+  resourceGroupName: 'GR_DEVOPS_SUMATIVA2' # Este es un nombre que debe cambiar al que crearon.
+  virtualNetworkName: 'VNet-DevOps-sumativa2'
+  subnetName: 'Subnet-DevOps-sumativa2'
   addressPrefix: '10.0.0.0/16'
   subnetPrefix: '10.0.1.0/24'
-  securityGroupName: 'NSG-taller-DevOps'
-  publicIpName: 'PublicIP-2-taller-DevOps'
-  vmName: 'VM-2-taller-DevOps'
+  securityGroupName: 'NSG-DevOps-sumativa2'
+  publicIpName: 'PublicIP-2-DevOps-sumativa2'
+  vmName: 'VM-2-DevOps-sumativa2'
   vmSize: 'Standard_B1s'  # SKU disponible en eastus2
   adminUsername: 'azureuser'
   adminPassword: 'Password1234$'  # Contraseña en texto plano (ajustar según necesidad)
@@ -70,5 +70,6 @@ steps:
       az vm create --resource-group $(resourceGroupName) --name $(vmName) --image $(imagePublisher):$(imageOffer):$(imageSku):$(imageVersion) --size $(vmSize) --admin-username $(adminUsername) --admin-password $(adminPassword) --vnet-name $(virtualNetworkName) --subnet $(subnetName) --nsg $(securityGroupName) --public-ip-address $(publicIpName)
       echo "Máquina virtual creada."
       az vm wait --resource-group $(resourceGroupName) --name $(vmName) --created
+
 
       
